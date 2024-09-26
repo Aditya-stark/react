@@ -1,0 +1,34 @@
+select a location 
+--> Open in terminal
+--> npm init -y
+--> npm install react react-dom
+--> Create a index.js and a folder named public which contains a file index.html
+
+--> In index.html:-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My React App</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="index.js"></script>
+</body>
+</html>
+
+-->In index.js:-
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+
+const App = () => {
+  return (
+    <h1>Hello, World!</h1>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+
+-->Install npm
