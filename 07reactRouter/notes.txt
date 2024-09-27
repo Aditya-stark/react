@@ -1,0 +1,28 @@
+Sab se phele Alag alag components like header, footer, homepage, aboutusPage baana liya uske bad
+Router ko initialize kiya {npm install react-router-dom}
+Phir main mai jakee `RouterProvider` import karke usko <App/> ke jagha use kiya and ek property dedi `router` naam ki jismai humene `router` varible ko pass kiya 
+
+`router` varible mai hum `createBrowserRouter([],{})` ko add karenge 
+
+ye ek array lega jismai hum ek object pass karnge jismai `path` and `element` hoga
+
+example:- 
+createBrowserRouter([
+  {
+    path: '/',
+    element: <Layout/>,
+    children: [
+      { path: "", element: <Home/> },
+      { path: "about", element: <About/> },
+    ],
+  },
+]);
+
+Layout tag mai humne Layout dicide kiya hai jo ek alag component hai 
+<Header/>
+<OutLet/>
+<Footer/>
+
+//FOR NAVIGETTING THE PAGE
+in the header there is home and about so add `to=""` and add the path of the pages in the 
+By this the isActive function will automatic get the active status and change the color accordingly 
