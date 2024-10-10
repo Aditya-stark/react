@@ -1,5 +1,5 @@
 import conf from "../conf/conf";
-import { Client, ID, Databases, Storage, Query, Query } from "appwrite";
+import { Client, ID, Databases, Storage, Query } from "appwrite";
 
 export class Service {
   client = new Client();
@@ -37,7 +37,7 @@ export class Service {
         conf.appWriteDatabaseId,
         conf.appWriteCollectionId,
         slug,
-        { title, content, featuredImage, status, userId }
+        { title, content, featuredImage, status }
       );
     } catch (error) {
       console.log(error);
@@ -69,12 +69,12 @@ export class Service {
         slug
       );
     } catch (error) {
-      console.log(error);
+      console.log("Appwrite serive :: getPost :: error", error);
       return false;
     }
   }
 
-  //List Post
+  //List Post 
   async getPosts(queries = [Query.equal("status", "active")]) {
     try {
       return await this.databases.listDocuments(
@@ -101,6 +101,7 @@ export class Service {
       return false;
     }
   }
+  
   //Delete File
   async deleteFile(fileId) {
     try {
