@@ -31,6 +31,7 @@ function App() {
       )
     );  
   };
+  
 
   // GETTING FROM LOCAL STORAGE
   useEffect(() => {

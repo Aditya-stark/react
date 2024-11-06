@@ -1,13 +1,13 @@
 import React from "react";
+import authService from "../../appwrite/auth";
 import { useDispatch } from "react-redux";
-import authService from "../../AppWrite/auth";
-import { logout } from "../../Store/authSlice";
+import { logoutState } from "../../Store/authSlice";
 
-function LogoutBtn() {
-  const dispatch = useDispatch();
+export default function LogoutBtn() {
+  const dispatch = useDispatch(); 
   const logoutHandler = () => {
     authService.logout().then(() => {
-      dispatch(logout());
+      dispatch(logoutState());
     });
   };
 
@@ -20,5 +20,3 @@ function LogoutBtn() {
     </button>
   );
 }
-
-export default LogoutBtn;

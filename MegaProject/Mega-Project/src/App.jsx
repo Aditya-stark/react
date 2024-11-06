@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import "./App.css";
-import authService from "./AppWrite/auth";
-import { login, logout } from "./Store/authSlice";
-import { Header, Footer } from "./components";
+import authService from "./appwrite/auth";
+import useDispatch from "react-redux";
+import { logoutState } from "./Store/authSlice";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 import { Outlet } from "react-router-dom";
 
 function App() {
-  //Loading state
   const [loading, setLoading] = useState(true);
-  const dispatch = useDispatch(); //data dispatch karne ke liye
+  const dispatch = useDispatch();
 
   useEffect(() => {
     authService
@@ -18,7 +18,7 @@ function App() {
         if (userData) {
           dispatch(login({ userData }));
         } else {
-          dispatch(logout());
+          dispatch(logoutState());
         }
       })
       .finally(setLoading(false));
@@ -26,15 +26,17 @@ function App() {
 
   return !loading ? (
     <div className="min-h-screen flex flex-wrap bg-gray-400">
-      <div className="w-full block">
+      <div>
         <Header />
         <main>
-          <Outlet/>
+          <Outlet />
         </main>
         <Footer />
       </div>
     </div>
-  ) : null;
+  ) : (
+    <p>Please Login to see posts</p>
+  );
 }
 
 export default App;
